@@ -3,7 +3,18 @@
   "version": "0.0.1",
   "description": "A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.",
   "keywords": [
-
+    "anchor",
+    "animate",
+    "animation",
+    "ease",
+    "hash",
+    "javascript",
+    "js",
+    "jump",
+    "link",
+    "no-jquery",
+    "scroll",
+    "scrolling"
   ],
   "author": {
     "name": "Kodie Grantham",
