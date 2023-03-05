@@ -1,0 +1,43 @@
+{
+  "name": "hashjump",
+  "version": "0.0.1",
+  "description": "A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.",
+  "keywords": [
+
+  ],
+  "author": {
+    "name": "Kodie Grantham",
+    "email": "kodie.grantham@gmail.com",
+    "url": "https://kodieg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kodie/hashjump.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kodie/hashjump/issues"
+  },
+  "homepage": "https://kodie.github.io/hashjump",
+  "license": "MIT",
+  "main": "dist/hashjump.js",
+  "module": "src/hashjump.js",
+  "scripts": {
+    "build": "npm run test && npm run build-js && npm run minify-js",
+    "build-js": "rollup --config rollup.config.js",
+    "minify-js": "uglifyjs dist/hashjump.js --comments /^!/ --compress --mangle --output dist/hashjump.min.js --source-map \"url='hashjump.min.js.map'\"",
+    "test": "standard --env browser"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@rollup/plugin-babel": "^5.3.0",
+    "core-js": "^3.19.2",
+    "rollup": "^2.60.2",
+    "standard": "^16.0.4",
+    "uglify-js": "^3.10.4"
+  },
+  "standard": {
+    "ignore": [
+      "/dist/*"
+    ]
+  }
+}

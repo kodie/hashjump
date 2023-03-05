@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hashjump - A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    <style type="text/css">
+      body {
+        background-color: #e9ecef;
+      }
+
+      body.wide-mode {
+        width: 200vw;
+      }
+
+      a {
+        color: #5185b3;
+        text-decoration: underline;
+      }
+
+      .github-fork-ribbon {
+        position: fixed;
+      }
+
+      .github-fork-ribbon:before {
+        background-color: #5185b3;
+      }
+
+      footer {
+        padding: 4rem 0;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      #main .container {
+        background-color: #ffffff;
+        padding: 4rem;
+      }
+
+      #main .container > div {
+        border: 1px solid black;
+      }
+
+      #main .container > div:focus {
+        outline: 1px solid #5185b3;
+      }
+
+      #main .container > div:not(:first-child) {
+        margin-top: 4rem;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+    </style>
+    <script type="text/javascript" src="dist/hashjump.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-ease@3"></script>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        hashjump('wide-mode', {
+          action: function (info) { document.body.classList.toggle('wide-mode') }
+        })
+
+        hashjump('section-2', {
+          hideUrlHash: true,
+          focusElement: true
+        })
+
+        hashjump('section-4', {
+          easingFunction: function (t) { return d3.easeElasticInOut(t) },
+          scrollDuration: 2000,
+          scrollOffset: 'inner-50%'
+        })
+
+        hashjump({
+          // action: null,
+          actionAfter: function (info) { console.log(info) },
+          // actionBefore: null,
+          // focusElement: 'input, select, button, textarea',
+          // hashjumpLinks: true,
+          // hashjumpLinkEvents: ['click', 'keypress'],
+          // hashjumpOnLoad: true,
+          // hideUrlHash: false,
+          // scrollOffset: '25%',
+          // scrollOffsetX: null,
+          // scrollOffsetY: null,
+          // scrollDuration: 200,
+          // scrollDurationOnLoad: null,
+          // scrollDurationOnClick: null,
+          // easingFunction: 'linear'
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/kodie/hashjump" data-ribbon="Check me out on GitHub" title="Check me out on GitHub">Check me out on GitHub</a>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">hashjump</h1>
+        <p class="lead">A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.</p>
+        <p><a href="https://github.com/kodie/hashjump" target="_blank">https://github.com/kodie/hashjump</a></p>
+        <br /><br /><a href="#wide-mode">Toggle Page Wide-Mode</a>
+      </div>
+    </div>
+
+    <div id="main">
+      <div class="container">
+        <div id="table-of-contents">
+          <h2>Table of Contents</h2>
+          <ul>
+            <li><a href="#section-1">Section 1</a></li>
+            <li><a href="#section-2">Section 2</a></li>
+            <li><a href="#section-3">Section 3</a></li>
+            <li><a href="#section-4">Section 4</a></li>
+            <li><a href="#section-5">Section 5</a></li>
+            <li><br /><br /><button type="button" class="btn btn-primary" onclick="hashjump.to('section-4')">Go to Section 4</button></li>
+          </ul>
+        </div>
+
+        <div id="section-1">
+          <h2>Section 1</h2>
+          <p>You'll notice that all sections by default will scroll into view with the top of the section being at 25% of your window instead of directly at the top.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac laoreet nulla, in sollicitudin augue. Donec quis sapien ut libero congue aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce vitae malesuada sem, id pulvinar libero. Fusce sed sapien erat. Fusce pellentesque magna a euismod bibendum. Integer nec pellentesque ligula, ac sodales lectus. Nam ut eleifend augue. Nullam a ex finibus, dapibus magna quis, sollicitudin nibh. Quisque malesuada, arcu nec vehicula consequat, nulla libero commodo purus, in viverra tortor libero ut elit. Quisque tempus vulputate elit, et euismod neque consectetur sed. Cras consequat tincidunt nisi id pulvinar.</p>
+          <a href="#table-of-contents">Go back to Table of Contents</a>
+        </div>
+
+        <div id="section-2" tabindex="2">
+          <h2>Section 2</h2>
+          <p>Notice how when you navigate to this section using an anchor link, there's nothing in the URL for it? The <code>hideUrlHash:true</code> option is set here.</p>
+          <p>Also the element we scrolled to became focused because the <code>focusElement:true</code> option is set. (You have to have the <code>tabindex</code> attribute set on the element in order for this to work.)</p>
+          <p>Quisque a felis et mauris laoreet blandit. Nulla volutpat, arcu ut tristique interdum, purus erat pellentesque erat, sit amet suscipit elit odio sollicitudin leo. Curabitur sodales imperdiet faucibus. Maecenas vitae arcu quis nunc aliquam hendrerit ut vitae felis. Mauris luctus, metus ac ullamcorper laoreet, quam erat lacinia ligula, sed consequat dui enim vitae lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras maximus, ante at dapibus ultrices, augue leo tristique elit, a molestie metus eros at lectus. Mauris eu dictum erat. Cras molestie turpis magna, in ultrices nisi accumsan eget. Phasellus mi urna, suscipit vitae est id, tempor mattis leo. Nulla id mauris suscipit, fermentum metus eget, efficitur metus. Curabitur iaculis ante sit amet justo placerat viverra a vel lorem. Sed dapibus justo eget quam venenatis, et pellentesque massa ultrices. Suspendisse sed viverra quam. Donec at mauris sollicitudin, posuere felis ut, facilisis augue.</p>
+          <a href="#table-of-contents">Go back to Table of Contents</a>
+        </div>
+
+        <div id="section-3">
+          <h2>Section 3</h2>
+          <p>Donec convallis, diam nec tempus tincidunt, ipsum nisl fringilla lorem, ut vehicula nibh orci eget ipsum. Curabitur eget interdum lorem. Nunc sit amet viverra leo. Nulla vestibulum gravida pellentesque. Ut mollis nibh efficitur eros euismod, in sollicitudin tortor elementum. Quisque pellentesque, ipsum eget consequat iaculis, nibh libero auctor dui, ut dictum odio urna at dolor. Pellentesque varius scelerisque dictum. Nam vestibulum efficitur tellus sed faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet mi tempor lectus cursus mattis sed scelerisque velit. Ut vel orci magna. Maecenas nec commodo sem, quis consequat mauris. Proin in urna euismod, interdum odio quis, tincidunt est. Nullam id ante diam. Pellentesque ultrices purus quis orci congue ullamcorper. Integer et sagittis leo.</p>
+          <a href="#table-of-contents">Go back to Table of Contents</a>
+        </div>
+
+        <div id="section-4">
+          <h2>Section 4</h2>
+          <p>Notice how navigating to this section takes much longer than the rest? The <code>scrollDuration:2000</code> option is set here.</p>
+          <p>This section also uses a different easing function for the scrolling animation by using the <code>easingFunction</code> option that is being passed a function from <a href="https://github.com/d3/d3-ease" target="_blank">d3-ease</a> (however hashjump does have a few easing functions built-in that you can use).</p>
+          <p>Also if you clicked the button instead of the link to get here, you'll notice if you take a look at the source of this file that we accomplished that by using the <code>hashjump.to('section-4')</code> function and didn't have to redefine options.</p>
+          <p>Lastly, this section will be centered on your screen horizontally as well as vertically due to the <code>scrollOffset:'inner-50%'</code> option.</code></p>
+          <a href="#table-of-contents">Go back to Table of Contents</a>
+        </div>
+
+        <div id="section-5">
+          <h2>Section 5</h2>
+          <p>Fusce libero diam, tincidunt nec vestibulum vel, bibendum eu justo. Mauris vitae blandit nisi. Donec rutrum eu nisi in congue. Praesent ultrices rutrum tortor. Nullam nec lobortis leo. Quisque efficitur, nibh et consequat placerat, purus est accumsan nulla, non congue massa elit eget justo. Donec condimentum quam vitae tortor sodales eleifend. Praesent arcu massa, lobortis at ante ac, dapibus imperdiet turpis. Etiam eget odio dapibus, accumsan orci nec, semper massa. Quisque maximus orci et ultrices pellentesque. Ut at dictum ex, sit amet luctus justo.</p>
+          <a href="#table-of-contents">Go back to Table of Contents</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">&copy; <a href="https://kodieg.com" target="_blank">Kodie Grantham</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
