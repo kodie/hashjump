@@ -64,7 +64,7 @@
   }
 
   /*!
-    hashjump v0.0.1 (https://github.com/kodie/hashjump)
+    hashjump v0.0.2 (https://github.com/kodie/hashjump)
     by Kodie Grantham (https://kodieg.com)
   */
 
@@ -83,14 +83,16 @@
         history.scrollRestoration = 'manual';
       }
       window.scrollTo(0, 0);
-      if (opts.hideUrlHash) {
+      if (opts.hideUrlHash || opts.ignoreEmptyHashes && !onLoadHash) {
         history.replaceState(null, null, window.location.pathname);
       }
-      window.addEventListener('load', function () {
-        hashjump.to(onLoadHash, Object.assign({
-          isOnLoad: true
-        }, opts));
-      });
+      if (!opts.ignoreEmptyHashes || onLoadHash) {
+        window.addEventListener('load', function () {
+          hashjump.to(onLoadHash, Object.assign({
+            isOnLoad: true
+          }, opts));
+        });
+      }
     }
     if (opts.hashjumpLinks) {
       var query;
@@ -108,14 +110,16 @@
       hashLinks.forEach(function (link) {
         opts.hashjumpLinkEvents.forEach(function (eventType) {
           link.addEventListener(eventType, function (e) {
-            if (opts.hideUrlHash) {
+            var linkHash = link.getAttribute('href').replace('#', '');
+            if (opts.hideUrlHash || opts.ignoreEmptyHashes && !linkHash) {
               e.preventDefault();
               history.replaceState(null, null, window.location.pathname);
             }
-            var linkHash = link.getAttribute('href').replace('#', '');
-            hashjump.to(linkHash, Object.assign({
-              isOnClick: true
-            }, opts));
+            if (!opts.ignoreEmptyHashes || linkHash) {
+              hashjump.to(linkHash, Object.assign({
+                isOnClick: true
+              }, opts));
+            }
           });
         });
       });
@@ -293,6 +297,7 @@
     hashjumpLinkEvents: ['click', 'keypress'],
     hashjumpOnLoad: true,
     hideUrlHash: false,
+    ignoreEmptyHashes: true,
     scrollOffset: '25%',
     scrollOffsetX: null,
     scrollOffsetY: null,
