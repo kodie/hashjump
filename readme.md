@@ -242,6 +242,7 @@ This option also accepts a string to set the easing function to one of the easin
   hashjumpLinkEvents: ['click', 'keypress'],
   hashjumpOnLoad: true,
   hideUrlHash: false,
+  ignoreEmptyHashes: true,
   scrollOffset: '25%',
   scrollOffsetX: null,
   scrollOffsetY: null,
