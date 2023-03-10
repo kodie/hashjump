@@ -29,13 +29,15 @@ const hashjump = (targetHashes, opts) => {
 
     window.scrollTo(0, 0)
 
-    if (opts.hideUrlHash) {
+    if (opts.hideUrlHash || (opts.ignoreEmptyHashes && !onLoadHash)) {
       history.replaceState(null, null, window.location.pathname)
     }
 
-    window.addEventListener('load', () => {
-      hashjump.to(onLoadHash, Object.assign({ isOnLoad: true }, opts))
-    })
+    if (!opts.ignoreEmptyHashes || onLoadHash) {
+      window.addEventListener('load', () => {
+        hashjump.to(onLoadHash, Object.assign({ isOnLoad: true }, opts))
+      })
+    }
   }
 
   if (opts.hashjumpLinks) {
@@ -52,14 +54,16 @@ const hashjump = (targetHashes, opts) => {
     hashLinks.forEach(link => {
       opts.hashjumpLinkEvents.forEach(eventType => {
         link.addEventListener(eventType, e => {
-          if (opts.hideUrlHash) {
+          const linkHash = link.getAttribute('href').replace('#', '')
+
+          if (opts.hideUrlHash || (opts.ignoreEmptyHashes && !linkHash)) {
             e.preventDefault()
             history.replaceState(null, null, window.location.pathname)
           }
 
-          const linkHash = link.getAttribute('href').replace('#', '')
-
-          hashjump.to(linkHash, Object.assign({ isOnClick: true }, opts))
+          if (!opts.ignoreEmptyHashes || linkHash) {
+            hashjump.to(linkHash, Object.assign({ isOnClick: true }, opts))
+          }
         })
       })
     })
@@ -267,6 +271,7 @@ hashjump.defaultOpts = {
   hashjumpLinkEvents: ['click', 'keypress'],
   hashjumpOnLoad: true,
   hideUrlHash: false,
+  ignoreEmptyHashes: true,
   scrollOffset: '25%',
   scrollOffsetX: null,
   scrollOffsetY: null,

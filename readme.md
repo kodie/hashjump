@@ -182,6 +182,13 @@ Decides if the anchor id should be displayed in the address bar. Accepts a boole
 *Note: This option is only used by the `hashjump()` init function.*
 
 
+#### ignoreEmptyHashes
+
+Decides if an anchor link with an empty hash should be ignored.
+
+*Note: This option is only used by the `hashjump()` init function.*
+
+
 #### scrollOffset
 
 The amount of pixels offset to the viewport and element position that the window should scroll to. For example, an offset of 5 would scroll the window to where the top of the element ends up at 5 pixels from the top of the viewport.
