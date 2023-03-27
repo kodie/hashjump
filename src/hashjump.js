@@ -1,5 +1,5 @@
 /*!
-  hashjump v0.0.2 (https://github.com/kodie/hashjump)
+  hashjump v0.0.2 (https://hashjump.js.org)
   by Kodie Grantham (https://kodieg.com)
 */
 

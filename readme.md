@@ -21,7 +21,7 @@ A tiny, dependency-free JavaScript module for handling anchor links and scrollin
 
 ## Demo
 
-Visit https://kodie.github.io/hashjump
+Visit https://hashjump.js.org
 
 
 ## Installation

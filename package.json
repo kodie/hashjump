@@ -28,10 +28,14 @@
   "bugs": {
     "url": "https://github.com/kodie/hashjump/issues"
   },
-  "homepage": "https://kodie.github.io/hashjump",
+  "homepage": "https://hashjump.js.org",
   "license": "MIT",
   "main": "dist/hashjump.js",
   "module": "src/hashjump.js",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "scripts": {
     "build": "npm run test && npm run build-js && npm run minify-js",
     "build-js": "rollup --config rollup.config.js",
