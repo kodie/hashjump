@@ -1,6 +1,6 @@
 {
   "name": "hashjump",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.",
   "keywords": [
     "anchor",
