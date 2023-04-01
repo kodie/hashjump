@@ -290,15 +290,17 @@ This is an example of the object that is passed to functions defined in the `act
 
 ## Related
 
- - [colorfield](https://github.com/kodie/colorfield) - A tiny, dependency-free, color input field helper that utilizes the native color picker.
-
  - [filebokz](https://github.com/kodie/filebokz) - A tiny, dependency-free, highly customizable and configurable, easy to use file input with some pretty sweet features.
+
+ - [growfield](https://github.com/kodie/growfield) - A tiny, dependency-free JavaScript module for making textarea elements grow with their content.
 
  - [kloner](https://github.com/kodie/kloner) - A tiny, dependency-free JavaScript module for cloning/repeating elements.
 
+ - [kolorfield](https://github.com/kodie/kolorfield) - A tiny, dependency-free, color input field helper that utilizes the native color picker.
+
  - [minitaur](https://github.com/kodie/minitaur) - The ultimate, dependency-free, easy to use, JavaScript plugin for creating and managing modals.
 
- - [vanishing-fields](https://github.com/kodie/vanishing-fields) - A dependency-free, easy to use, JavaScript plugin for hiding and showing fields.
+ - [peekfield](https://github.com/kodie/peekfield) - A dependency-free, easy to use, JavaScript plugin for hiding and showing fields.
 
 
 ## License
